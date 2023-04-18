@@ -1,3 +1,16 @@
+:root {
+  --background-color: #10051e;
+  --container-b-color: #210b3c;
+  --elements-b-color: #2a193e;
+  --hover-b-color: #3d2657;
+  --text-color: white;
+  --hover-color: #ff9900;
+  --a-color: #b99add;
+}
+#root {
+	display: flex;
+	justify-content: center;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,3 +24,55 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body{
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+a{
+  color: var(--text-color);
+}
+a:hover{
+  color: var(--hover-color);
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 50px; /* Change this height to whatever you want your footer height to be */
+  background-color: var(--elements-b-color);
+  text-align: center;
+}
+
+.appContainer {
+	width: 70%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.appContainer li {
+  word-break: break-all;
+}
+
+ .eventContainer {
+    background-color: var(--container-b-color);
+  }
+  .eventContainer td {
+    padding: 10px;
+    word-break: break-all;
+  }
+  thead {
+    text-align: left;
+  }
+button {
+    word-break: break-all;
+    margin: 20px;
+    background-color: var(--elements-b-color);
+    color: var(--text-color);
+    padding: 15px 25px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+  }
