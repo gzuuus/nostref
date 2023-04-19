@@ -85,3 +85,14 @@ button {
     grid-gap: 20px;
     grid-auto-flow: column;
   }
+
+  @media screen and (max-width: 800px) {
+    .eventCounterContainer {
+      grid-auto-flow: unset;
+    }
+    .appContainer {
+      width: 90%;
+    }
+  }
+    
+  
