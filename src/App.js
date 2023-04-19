@@ -19,8 +19,8 @@ const App = () => {
     "wss://universe.nostrich.land/",
     "wss://welcome.nostr.wine/"
   ], []);
-
   useEffect(() => {
+  
     if (pubKey) {
       const relayPool = new RelayPool(relayList);
 
@@ -99,24 +99,21 @@ const App = () => {
       <h1>NostrRef</h1>
       <h2>See what is referenced in your relays</h2>
       <h3>WIP!</h3>
-      <p>When you press 'Fetch your relays' it will find your public relay list and then it will scrape your relays looking for notes with a '#r' tag, at the same time it will count how many times an 'r value' is repeated and it will show you in a sorted list.</p>
-      <p>R-values are links that take you to a chat.punkhub, for example, with that ref set as the topic. There you'll be able to see what the peeps are talking about that ref and you'll be able to comment too!</p>
+      <p>When you press 'Fetch your relays' it will find your public relay list and then it will scrape your relays looking for notes with a '#r' and '#t' tag, at the same time it will count how many times an 'R value' and 'T value' is repeated and it will show you in a sorted list.</p>
+      <p>'R values' and 'T values' are links that take you to a nostrichat over chat.punkhub, that ref set as the topic. There you'll be able to see what the peops are talking about that ref and you'll be able to comment too!</p>
       <p>More PoW coming, expect improvements</p>
       <h3>💡Notes since the last 24h</h3>
       <button onClick={fetchData}>Fetch your relays</button>
       <div>
+      
       {showComponents ? (
         <div>
           <RelayCard objRelays={newRelayList} />
+          <h2>Event Counter</h2>
           <EventCounter events={events} />
         </div>
       ) : null}
       </div>
-      {/* {events
-        .filter((event) => event.tags.find((tag) => tag.includes("r")))
-        .map((event) => (
-          <Card key={event.id} event={event} tagWithR={event.tags.find((tag) => tag.includes("r"))} />
-        ))} */}
       <Footer />
     </div>
   );

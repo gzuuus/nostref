@@ -49,6 +49,7 @@ footer {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+  margin-bottom: 70px;
 }
 
 .appContainer li {
@@ -75,4 +76,12 @@ button {
     border: none;
     cursor: pointer;
     text-align: center;
+  }
+  button:hover{
+    background-color: var(--hover-b-color);
+  }
+  .eventCounterContainer {
+    display: grid;
+    grid-gap: 20px;
+    grid-auto-flow: column;
   }
