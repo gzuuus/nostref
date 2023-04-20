@@ -39,13 +39,41 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 50px; /* Change this height to whatever you want your footer height to be */
+  height: 50px;
   background-color: var(--elements-b-color);
   text-align: center;
 }
+table td {
+  height: 20px;
+}
 
+svg path {
+  fill: var(--text-color);
+}
+svg:hover path {
+  fill: var(--hover-color);
+}
+summary {
+	display: block;
+}
+summary:hover {
+	color: var(--hover-color);
+  cursor: pointer;
+}
+.svg-src{
+  width: 15px;
+  vertical-align: middle;
+  padding: 0px 5px;
+}
+.buttonBox {
+	padding: 5px;
+	background-color: var(--elements-b-color);
+	width: fit-content;
+  border-radius: 15px;
+  margin: 5px 0px;
+}
 .appContainer {
-	width: 70%;
+	width: 80%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -84,6 +112,7 @@ button {
     display: grid;
     grid-gap: 20px;
     grid-auto-flow: column;
+    align-items: start;
   }
 
   @media screen and (max-width: 800px) {

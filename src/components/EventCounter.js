@@ -1,4 +1,5 @@
 import React from "react";
+import { GoOut, GoChat} from '../graphics/index.js';
 
 const EventCounter = ({ events }) => {
   const rValueCounts = {};
@@ -48,21 +49,19 @@ const EventCounter = ({ events }) => {
       <table>
         <thead>
           <tr>
-            <th>R Value (last 24h)</th>
+            <th>Hashtags</th>
             <th>Count</th>
           </tr>
         </thead>
         <tbody>
-          {filteredRValueCounts.map(([rValue, count]) => (
-            <tr key={rValue} className="eventContainer">
+          {filteredTValueCounts.map(([tValue, count]) => (
+            <tr key={tValue} className="eventContainer">
               <td>
-                <a
-                  href={`https://chat.punkhub.me/?ref=${rValue}`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {rValue}
-                </a>
+                <a href={`https://snort.social/t/${tValue}`} target="_blank" rel="noreferrer" >{tValue} </a>
+                <div className="buttonBox">
+                  <a href={`https://chat.punkhub.me/?tag=${tValue}`} target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }} > <GoChat className="svg-src"/></a>
+                  <a href={`https://snort.social/t/${tValue}`} target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }} > <GoOut className="svg-src"/></a>
+                </div>
               </td>
               <td>{count}</td>
             </tr>
@@ -72,21 +71,19 @@ const EventCounter = ({ events }) => {
       <table>
         <thead>
           <tr>
-            <th>T Value (last 24h)</th>
+            <th>References</th>
             <th>Count</th>
           </tr>
         </thead>
         <tbody>
-          {filteredTValueCounts.map(([tValue, count]) => (
-            <tr key={tValue} className="eventContainer">
+          {filteredRValueCounts.map(([rValue, count]) => (
+            <tr key={rValue} className="eventContainer">
               <td>
-                <a
-                  href={`https://chat.punkhub.me/?tag=${tValue}`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {tValue}
-                </a>
+                <a href={`https://chat.punkhub.me/?ref=${rValue}`} target="_blank" rel="noreferrer">{rValue}</a>
+                <div className="buttonBox">
+                  <a href={`https://chat.punkhub.me/?ref=${rValue}`} target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }} > <GoChat className="svg-src"/></a>
+                  <a href={rValue} target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }} > <GoOut className="svg-src"/></a>
+                </div>
               </td>
               <td>{count}</td>
             </tr>
