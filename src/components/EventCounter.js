@@ -7,25 +7,29 @@ const EventCounter = ({ events }) => {
 
   // count the number of times each R and T value appears in the events
   events.forEach((event) => {
-    const tagWithR = event.tags.find((tag) => tag.includes("r"));
-    if (tagWithR) {
-      const valueOfR = tagWithR[1];
-      if (valueOfR in rValueCounts) {
-        rValueCounts[valueOfR]++;
-      } else {
-        rValueCounts[valueOfR] = 1;
+    event.tags.forEach((tag) => {
+      if (tag.includes("r")) {
+        for (let i = 1; i < tag.length; i++) {
+          const valueOfR = tag[i];
+          if (valueOfR in rValueCounts) {
+            rValueCounts[valueOfR]++;
+          } else {
+            rValueCounts[valueOfR] = 1;
+          }
+        }
       }
-    }
 
-    const tagWithT = event.tags.find((tag) => tag.includes("t"));
-    if (tagWithT) {
-      const valueOfT = tagWithT[1];
-      if (valueOfT in tValueCounts) {
-        tValueCounts[valueOfT]++;
-      } else {
-        tValueCounts[valueOfT] = 1;
+      if (tag.includes("t")) {
+        for (let i = 1; i < tag.length; i++) {
+          const valueOfT = tag[i];
+          if (valueOfT in tValueCounts) {
+            tValueCounts[valueOfT]++;
+          } else {
+            tValueCounts[valueOfT] = 1;
+          }
+        }
       }
-    }
+    });
   });
 
   // filter the R-values that have a count greater than 0

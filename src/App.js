@@ -4,6 +4,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import RelayCard from "./components/RelayCard";
 import EventCounter from "./components/EventCounter";
 import Footer from "./components/Footer";
+import { Logo} from './graphics/index.js';
 
 const App = () => {
   const [events, setEvents] = useState([]);
@@ -12,7 +13,6 @@ const App = () => {
   const [showComponents, setShowComponents] = useState(false);
 
   const relayList = useMemo(() => [
-    "wss://relay.snort.social",
     "wss://nos.lol",
     "wss://relay.nostr.band",
     "wss://nostr.wine/",
@@ -96,7 +96,7 @@ const App = () => {
 
   return (
     <div className="appContainer">
-      <h1>NostrRef</h1>
+      <h1><Logo className="Logo" />NostrRef</h1>
       <h2>See what is referenced in your relays</h2>
       <h3>WIP!</h3>
       <p>When you press 'Fetch your relays' it will find your public relay list and then it will scrape your relays looking for notes with a '#r' and '#t' tag, at the same time it will count how many times an 'R value' and 'T value' is repeated and it will show you in a sorted list.</p>

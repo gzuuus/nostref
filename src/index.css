@@ -114,6 +114,12 @@ button {
     grid-auto-flow: column;
     align-items: start;
   }
+  .Logo {
+    vertical-align: middle;
+    height: 35px;
+    width: auto;
+    padding: 10px;
+}
 
   @media screen and (max-width: 800px) {
     .eventCounterContainer {
