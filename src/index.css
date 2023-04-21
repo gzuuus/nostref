@@ -29,6 +29,9 @@ body{
   background-color: var(--background-color);
   color: var(--text-color);
 }
+p{
+  text-align: center;
+}
 a{
   color: var(--text-color);
 }
@@ -142,6 +145,12 @@ button {
 }
 .buttonContainer {
 	display: flex;
+}
+.WellKnowRelays {
+	text-align: center;
+}
+.WellKnowRelays button {
+	margin: 5px;
 }
 
   @media screen and (max-width: 768px) {

@@ -3,10 +3,7 @@ import {nip19} from "nostr-tools";
 import React, { useEffect, useMemo, useState} from "react";
 import RelayCard from "./RelayCard";
 import EventCounter from "./EventCounter";
-
-
-
-
+import RelayButton from "./WellKnowRelays";
 const Home = () => {
   const [events, setEvents] = useState([]);
   const [pubKey, setPubKey] = useState("");
@@ -14,8 +11,6 @@ const Home = () => {
   const [showComponents, setShowComponents] = useState(false);
   const [inputRelay, setinputRelay] = useState('');
   const [isNavigateRelay, setIsNavigateRelay] = useState(false);
-
-
 
   const relayList = useMemo(() => [
     "wss://nos.lol",
@@ -131,6 +126,18 @@ const Home = () => {
           </div>
         )}
       </div>
+      {isNavigateRelay && (
+          <div>
+            <div className="WellKnowRelays">
+              <h3>Well Know Relays</h3>
+              <RelayButton relayId={"wss://nos.lol"} />
+              <RelayButton relayId={"wss://relay.nostr.band"} />
+              <RelayButton relayId={"wss://relay.snort.social"} />
+              <RelayButton relayId={"wss://relay.damus.io"} />
+
+            </div>
+          </div>
+        )}
       <div>
         {showComponents ? (
           <div>
