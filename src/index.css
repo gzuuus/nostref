@@ -121,13 +121,43 @@ button {
     padding: 10px;
 }
 
-  @media screen and (max-width: 800px) {
+.Navigation {
+  padding: 1rem;
+}
+
+.LogoLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.MenuTitle {
+  font-size: 2em;
+  font-weight: bold;
+} 
+#inputRelay {
+	padding: 12px;
+	border-radius: 10px;
+	border: none;
+}
+.buttonContainer {
+	display: flex;
+}
+
+  @media screen and (max-width: 768px) {
     .eventCounterContainer {
       grid-auto-flow: unset;
     }
     .appContainer {
       width: 90%;
     }
+
   }
+  @media screen and (max-width: 568px) {
+    .buttonContainer {
+      display: flex;
+      flex-direction: column;
+    }
+}
     
   
