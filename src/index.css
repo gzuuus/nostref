@@ -177,6 +177,9 @@ li button {
     footer {
       height: 65px;
     }
+    .inputRelayContainer {
+      display: grid;
+    }
 
   }
   @media screen and (max-width: 568px) {

@@ -121,7 +121,7 @@ const Home = () => {
           </div>
         )}
         {isNavigateRelay && (
-          <div>
+          <div className="inputRelayContainer">
             <input placeholder="Relay URL or comma-separated list" type="text" value={inputRelay} onChange={(e) => setinputRelay(e.target.value)} onKeyDown={(e) => {
                 if (e.key === 'Enter') { e.preventDefault(); handleEncodeClick(); } }} id="inputRelay" />
             <button onClick={handleEncodeClick}>Go</button>
