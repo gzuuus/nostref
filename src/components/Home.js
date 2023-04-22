@@ -4,6 +4,7 @@ import React, { useEffect, useMemo, useState} from "react";
 import RelayCard from "./RelayCard";
 import EventCounter from "./EventCounter";
 import RelayButton from "./WellKnowRelays";
+
 const Home = () => {
   const [events, setEvents] = useState([]);
   const [pubKey, setPubKey] = useState("");
@@ -19,8 +20,8 @@ const Home = () => {
     "wss://universe.nostrich.land/",
     "wss://welcome.nostr.wine/"
   ], []);
+
   useEffect(() => {
-  
     if (pubKey) {
       const relayPool = new RelayPool(relayList);
 
@@ -82,6 +83,7 @@ const Home = () => {
         return pubKey;
       } catch (error) {
         console.error(error);
+        alert(error);
       }
     }
   }
@@ -134,16 +136,16 @@ const Home = () => {
               <RelayButton relayId={"wss://relay.nostr.band"} />
               <RelayButton relayId={"wss://relay.snort.social"} />
               <RelayButton relayId={"wss://relay.damus.io"} />
-
+              <RelayButton relayId={"wss://eden.nostr.land/"} />
             </div>
           </div>
         )}
       <div>
         {showComponents ? (
           <div>
-            <RelayCard objRelays={newRelayList} />
+            <RelayCard objRelays={newRelayList} details={false}/>
             <h2>Event Counter</h2>
-            <EventCounter events={events} />
+            <EventCounter events={events} relays={newRelayList} />
           </div>
         ) : null}
         </div>

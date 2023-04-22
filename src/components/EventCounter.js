@@ -1,10 +1,12 @@
-import React from "react";
-import { GoOut, GoChat} from '../graphics/index.js';
+import React, { useState} from "react";
+import { GoOut, GoChat } from "../graphics/index.js";
 
-const EventCounter = ({ events }) => {
+const EventCounter = ({ events, relays }) => {
+  const [isRTableVisible, setIsRTableVisible] = useState(true);
+  const [isTTableVisible, setIsTTableVisible] = useState(true);
+  const [showMore, setShowMore] = useState(false);
   const rValueCounts = {};
   const tValueCounts = {};
-
   // count the number of times each R and T value appears in the events
   events.forEach((event) => {
     event.tags.forEach((tag) => {
@@ -48,9 +50,22 @@ const EventCounter = ({ events }) => {
   // sort the filteredTValueCounts array by count in descending order
   filteredTValueCounts.sort((a, b) => b[1] - a[1]);
 
+  
+  const handleClick = () => setShowMore(!showMore);
+  const displayedCount = showMore ? filteredTValueCounts.length : 10;
+  const handleShowMore = () => handleClick();
+  const toggleRTable = () => setIsRTableVisible(!isRTableVisible);
+  const toggleTTable = () => setIsTTableVisible(!isTTableVisible);
+
   return (
+    <div>
+      <div>
+      <button className={`toggleButton ${isTTableVisible ? '' : 'disable'}`} onClick={toggleTTable}>Hashtags table</button>
+      <button className={`toggleButton ${isRTableVisible ? '' : 'disable'}`} onClick={toggleRTable}>Ref table</button>
+      </div>
     <div className="eventCounterContainer">
-      <table>
+      {isTTableVisible && 
+      <table className="TTable">
         <thead>
           <tr>
             <th>Hashtags</th>
@@ -58,21 +73,22 @@ const EventCounter = ({ events }) => {
           </tr>
         </thead>
         <tbody>
-          {filteredTValueCounts.map(([tValue, count]) => (
+          {filteredTValueCounts.slice(0, displayedCount).map(([tValue, count]) => (
             <tr key={tValue} className="eventContainer">
               <td>
-                <a href={`https://snort.social/t/${tValue}`} target="_blank" rel="noreferrer" >{tValue} </a>
+                <a href={`https://snort.social/t/${tValue}`} target="_blank" rel="noreferrer">{tValue}</a>
                 <div className="buttonBox">
-                  <a href={`https://chat.punkhub.me/?tag=${tValue}`} target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }} > <GoChat className="svg-src"/></a>
-                  <a href={`https://snort.social/t/${tValue}`} target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }} > <GoOut className="svg-src"/></a>
+                  <a href={`https://chat.punkhub.me/?tag=${tValue}&relays=${relays}`} target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }} ><GoChat className="svg-src"/></a>
+                  <a href={`https://snort.social/t/${tValue}`} target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }} ><GoOut className="svg-src"/></a>
                 </div>
               </td>
               <td>{count}</td>
             </tr>
           ))}
         </tbody>
-      </table>
-      <table>
+      </table>}
+      {isRTableVisible &&
+      <table className="RTable">
         <thead>
           <tr>
             <th>References</th>
@@ -80,22 +96,28 @@ const EventCounter = ({ events }) => {
           </tr>
         </thead>
         <tbody>
-          {filteredRValueCounts.map(([rValue, count]) => (
+          {filteredRValueCounts.slice(0, displayedCount).map(([rValue, count]) => (
             <tr key={rValue} className="eventContainer">
               <td>
-                <a href={`https://chat.punkhub.me/?ref=${rValue}`} target="_blank" rel="noreferrer">{rValue}</a>
+                <a href={`https://chat.punkhub.me/?ref=${rValue}&relays=${relays}`} target="_blank" rel="noreferrer">{rValue}</a>
                 <div className="buttonBox">
-                  <a href={`https://chat.punkhub.me/?ref=${rValue}`} target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }} > <GoChat className="svg-src"/></a>
-                  <a href={rValue} target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }} > <GoOut className="svg-src"/></a>
+                  <a href={`https://chat.punkhub.me/?ref=${rValue}&relays=${relays}`} target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }} ><GoChat className="svg-src"/></a>
+                  <a href={rValue} target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }} ><GoOut className="svg-src"/></a>
                 </div>
               </td>
               <td>{count}</td>
             </tr>
           ))}
         </tbody>
-      </table>
+      </table>}
+    </div>
+    {displayedCount < filteredRValueCounts.length && (isRTableVisible || isTTableVisible) &&(
+        <button className="loadMoreButton" onClick={handleShowMore}>Load more</button>
+      )}
+    {showMore && (
+        <button className="loadMoreButton" onClick={handleShowMore}>Load less</button>
+      )}
     </div>
   );
-};
-
+      }  
 export default EventCounter;

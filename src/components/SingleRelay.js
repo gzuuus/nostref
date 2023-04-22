@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { RelayPool } from "nostr-relaypool";
 import { nip19 } from 'nostr-tools';
 import EventCounter from "./EventCounter";
+import RelayCard from "./RelayCard";
 
 
 function SingleRelay() {
@@ -53,8 +54,7 @@ function SingleRelay() {
 
   return (
     <div>
-        <h1>{relayList.join(", ")}</h1>
-
+        <RelayCard objRelays={relayList} details={true}/>
         <h2>Event Counter</h2>
         <EventCounter events={events} />
     </div>

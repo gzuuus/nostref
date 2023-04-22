@@ -152,13 +152,30 @@ button {
 .WellKnowRelays button {
 	margin: 5px;
 }
-
+li button {
+	padding: 2px 10px;
+	margin: 1px;
+}
+.loadMoreButton {
+	width: 100%;
+	margin: 20px 0px;
+}
+.toggleButton {
+	margin: 5px 10px 5px 0px;
+	padding: 10px;
+}
+.disable {
+	background: var(--container-b-color);
+}
   @media screen and (max-width: 768px) {
     .eventCounterContainer {
       grid-auto-flow: unset;
     }
     .appContainer {
       width: 90%;
+    }
+    footer {
+      height: 65px;
     }
 
   }
