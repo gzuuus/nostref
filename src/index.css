@@ -32,6 +32,7 @@ body{
 }
 p{
   text-align: center;
+  word-break: break-word;
 }
 a{
   color: var(--text-color);
@@ -187,6 +188,18 @@ li button {
 .rvalueDescription > a {
 	display: block;
 }
+@media screen and (max-width: 1250px) {
+  .appContainer {
+    width: 100%;
+    margin: 0px 5px;
+  }
+  .appContainer {
+    margin-bottom: 35px;
+  }
+  .isImage, .isVideo {
+    width: auto;
+  }
+}
   @media screen and (max-width: 768px) {
     .eventCounterContainer {
       grid-auto-flow: unset;
@@ -201,12 +214,24 @@ li button {
     .inputRelayContainer {
       display: grid;
     }
+    .appContainer {
+      margin-bottom: 35px;
+    }
+    .isImage, .isVideo {
+      width: auto;
+    }
 
   }
   @media screen and (max-width: 568px) {
     .buttonContainer {
       display: flex;
       flex-direction: column;
+    }
+    .appContainer {
+      margin-bottom: 35px;
+    }
+    .isImage, .isVideo {
+      width: 100%;
     }
 }
     
