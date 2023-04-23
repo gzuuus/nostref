@@ -21,10 +21,11 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+	background-color: var(--elements-b-color);
+	padding: 2px;
+	border-radius: 10px;
 }
-
 body{
   background-color: var(--background-color);
   color: var(--text-color);
@@ -47,7 +48,8 @@ footer {
   text-align: center;
 }
 table td {
-  height: 20px;
+	height: 20px;
+	max-width: 800px;
 }
 
 svg path {
@@ -167,12 +169,31 @@ li button {
 .disable {
 	background: var(--container-b-color);
 }
+.isImage, .isVideo {
+	width: auto;
+	max-height: 650px;
+	max-width: 500px;
+	display: block;
+	margin: 15px 0px;
+}
+.rvalueDescription {
+	padding: 15px;
+	background: var(--hover-b-color);
+	border-radius: 15px;
+  text-align: left;
+  word-break: break-word;
+  width: fit-content;
+}
+.rvalueDescription > a {
+	display: block;
+}
   @media screen and (max-width: 768px) {
     .eventCounterContainer {
       grid-auto-flow: unset;
     }
     .appContainer {
-      width: 90%;
+      width: 100%;
+      margin: 0px 5px;
     }
     footer {
       height: 65px;

@@ -1,5 +1,6 @@
-import React, { useState} from "react";
+import React, { useState, useEffect } from "react";
 import { GoOut, GoChat } from "../graphics/index.js";
+import FileTypePreview from "./FileTypePreview.js";
 
 const EventCounter = ({ events, relays }) => {
   const [isRTableVisible, setIsRTableVisible] = useState(true);
@@ -50,7 +51,6 @@ const EventCounter = ({ events, relays }) => {
   // sort the filteredTValueCounts array by count in descending order
   filteredTValueCounts.sort((a, b) => b[1] - a[1]);
 
-  
   const handleClick = () => setShowMore(!showMore);
   const displayedCount = showMore ? filteredTValueCounts.length : 10;
   const handleShowMore = () => handleClick();
@@ -99,6 +99,7 @@ const EventCounter = ({ events, relays }) => {
           {filteredRValueCounts.slice(0, displayedCount).map(([rValue, count]) => (
             <tr key={rValue} className="eventContainer">
               <td>
+                <FileTypePreview rValue={rValue} />
                 <a href={`https://chat.punkhub.me/?ref=${rValue}&relays=${relays}`} target="_blank" rel="noreferrer">{rValue}</a>
                 <div className="buttonBox">
                   <a href={`https://chat.punkhub.me/?ref=${rValue}&relays=${relays}`} target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }} ><GoChat className="svg-src"/></a>

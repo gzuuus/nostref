@@ -56,7 +56,7 @@ function SingleRelay() {
     <div>
         <RelayCard objRelays={relayList} details={true}/>
         <h2>Event Counter</h2>
-        <EventCounter events={events} />
+        <EventCounter events={events} relays={relayList} />
     </div>
   );
 }
